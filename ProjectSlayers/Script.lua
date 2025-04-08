@@ -21,7 +21,7 @@ if (status.code == "KEY_VALID") then
 
     -- fetch basic info about the key (only if KEY_VALID)
 	Fluent:Notify({
-		Title = "Welcome. Seconds left: " .. (status.data.auth_expire - os.time());
+		Title = "Welcome. Seconds left: " .. (os.time() - status.data.auth_expire);
 		Content = "Total executions: " ..  status.data.total_executions;
 		SubContent = status.data.note == "Ad Reward" and "Ad Reward" or "Lifetime";
 		Duration = 10;
