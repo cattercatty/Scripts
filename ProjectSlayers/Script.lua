@@ -23,7 +23,7 @@ if (status.code == "KEY_VALID") then
 	Fluent:Notify({
 		Title = "Welcome. Seconds left: " .. (os.time() - status.data.auth_expire);
 		Content = "Total executions: " ..  status.data.total_executions;
-		SubContent = status.data.note == "Ad Reward" and "Ad Reward" or "Lifetime";
+		SubContent = status.data.note == "Ad Reward" and "Ad Reward" or "Custom Duration";
 		Duration = 10;
 	})
     
