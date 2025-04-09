@@ -1,3 +1,6 @@
+getgenv().WebSocket = nil; -- rarely poses issues
+getgenv().Websocket = nil;
+
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
 local api = loadstring(game:HttpGet("https://sdkapi-public.luarmor.net/library.lua"))()
