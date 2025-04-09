@@ -86,7 +86,7 @@ local Tabs1 = {
 
 Tabs1.Main:AddParagraph({
 	Title = "Key System",
-	Content = "Get key 🐱";
+	Content = "Get key 🐱\nIf you're having problems please join our discord server\nand check the #key channel!\nYou will find detailed instructions there\nIf you're still havin problems ping @frostlua in the chat!";
 })
 
 Tabs1.Main:AddButton({
