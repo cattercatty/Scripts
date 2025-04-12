@@ -226,7 +226,7 @@ local v_u_5 = {
 local v_u_6 = {}
 local v_u_7 = {}
 local v_u_8 = nil;
-local Cat = {
+Cat = {
 	["GetAllType"] = function(p9, p10)
 		-- upvalues: (copy) v_u_4
 		local v11 = 1
