@@ -1,6 +1,29 @@
-local v1 = game:GetService("ReplicatedStorage")
-local v_u_2 = v1.SharedModules
-local v3 = v1.Indexer
+CloneTable = function(p96)
+	local v97 = {};
+	for v98, v99 in pairs(p96) do
+		if type(v99) == "table" then
+			v97[v98] = CloneTable(v99);
+		else
+			v97[v98] = v99;
+		end;
+	end;
+	return v97;
+end;
+
+local v_u_1 = game:GetService("ReplicatedStorage");
+local GetGuildInfo = function(p404)
+	local v405 = p404.leaderstats:GetAttribute("Guild");
+	if v405 ~= false then
+		local v406 = v_u_1.__Infos.__Guilds:FindFirstChild(v405);
+		if v406 ~= nil then
+			return v406;
+		end;
+	end;
+end;
+
+local v1 = game:GetService("ReplicatedStorage");
+local v_u_2 = v1.SharedModules;
+local v3 = v1.Indexer;
 local v_u_4 = {
 	["Shadow"] = {
 		["Name"] = "Shadow Boost",
