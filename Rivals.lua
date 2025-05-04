@@ -19,15 +19,7 @@ local localPlayer = players.LocalPlayer
 
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local Fluent1 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local success, err = pcall(function()
-    local Content = readfile("frostieskey.txt")
-    if Content == "FrostiesOnTop" then
-        print("Key already grabbed!")
-        getgenv().Frosties = true
-    else
-        getgenv().Frosties = false
-    end
-end)
+getgenv().Frosties = true
 
 local Window1 = Fluent1:CreateWindow({
     Title = "Frosties"..frostiesversion,
