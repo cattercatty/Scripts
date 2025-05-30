@@ -14,6 +14,7 @@ api.script_id = "590f1ccc9913df943bdbd88635a9d5ca"
 
 local function checkKey(inputKey)
 inputKey = inputKey:gsub("%s+", "");
+if #inputKey ~= 32 then return false end
 -- make the API request:
 local status = api.check_key(inputKey); -- pass 32-char user key here
 
