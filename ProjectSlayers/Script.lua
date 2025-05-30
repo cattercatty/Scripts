@@ -62,7 +62,8 @@ end
 end;
 
 if isfolder and isfolder("Frosties") and isfile("Frosties/Key.txt") then
-	ret = checkKey(readfile("Frosties/Key.txt"));
+	local key = readfile("Frosties/Key.txt");
+	ret = #key == 32 and checkKey(key) or false;
 	if ret == true then
 		return;
 	end;
