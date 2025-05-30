@@ -438,9 +438,7 @@ end)
 
 
 
-CreditsSection1:NewLabel("Made and fully developed, by _shqiperia_ on discord")
 CreditsSection1:NewLabel("Discord Invite: discord.gg/XUUjpeyc3S")
-CreditsSection1:NewLabel("Made with love by FrostLua ;)")
 
 game:GetService("StarterGui"):SetCore("SendNotification",{
 	Title = "Update log 1.1.0", -- Required
