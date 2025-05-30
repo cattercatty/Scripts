@@ -32,6 +32,7 @@ if (status.code == "KEY_VALID") then
 	})
     
     script_key = inputKey; -- SET THE KEY BEFORE LOADSTRINGING.
+    getgenv().script_key = inputKey; -- SET THE KEY BEFORE LOADSTRINGING.
     
     task.spawn(function() api.load_script(); end); -- Executes the script, based on the script_id you put above.
     -- Alternatively, you can just put the loadstring you got from luarmor website.
