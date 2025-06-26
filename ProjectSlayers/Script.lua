@@ -71,6 +71,11 @@ if isfolder and isfolder("Frosties") and isfile("Frosties/Key.txt") then
 	end;
 end;
 
+if type(script_key) == 'string' and #script_key == 32 then
+	ret = checkKey(script_key) or false;
+	if ret then return end;
+end;
+
 -- You can see a full list of possible status codes and status messages below.
 
 local FrostiesVersion = "1.3"
