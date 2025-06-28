@@ -103,7 +103,7 @@ Tabs1.Main:AddParagraph({
 Tabs1.Main:AddButton({
 	Title = "Copy key link";
 	Description = "This copies the get key link to your clipboard";
-	Callback = setclipboard("https://ads.luarmor.net/get_key?for=Frosties_Key_System-ZVhflfaXnikU");
+	Callback = setclipboard("https://ads.luarmor.net/get_key?for=Frosties_WorkInk_Key_System-SkiHRHkiWxho");
 })
 
 Window:SelectTab(1)
