@@ -112,7 +112,7 @@ local Input = Tabs1.Main:AddInput("Input", {
 	Default = "",
 	Placeholder = "Placeholder",
 	Numeric = false, -- Only allows numbers
-	Finished = true, -- Only calls callback when you press enter
+	Finished = false, -- Only calls callback when you press enter
 	Callback = function(Value)
 		ret = checkKey(Value);
 		if ret == true then
