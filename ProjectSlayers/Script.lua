@@ -78,10 +78,10 @@ end;
 
 -- You can see a full list of possible status codes and status messages below.
 
-local FrostiesVersion = "1.3"
+local FrostiesVersion = "2"
 
 local Window = Fluent:CreateWindow({
-	Title = "Frosties "..FrostiesVersion,
+	Title = "Frosties ".. FrostiesVersion,
 	SubTitle = "discord.gg/XUUjpeyc3S",
 	TabWidth = 160,
 	Size = UDim2.fromOffset(550, 280),
@@ -97,13 +97,13 @@ local Tabs1 = {
 
 Tabs1.Main:AddParagraph({
 	Title = "Key System",
-	Content = "Get key 🐱\nIf you're having problems please join our discord server\nand check the #key channel!\nYou will find detailed instructions there\nIf you're still havin problems ping @frostlua in the chat!";
+	Content = "Get key 🐱\nIf you're having problems please join our discord server\nand check the #key channel!\nYou will find detailed instructions there\nIf you're still having problems, open a ticket in our discord server!";
 })
 
 Tabs1.Main:AddButton({
 	Title = "Copy key link";
 	Description = "This copies the get key link to your clipboard";
-	Callback = setclipboard("https://ads.luarmor.net/get_key?for=Frosties_WorkInk_Key_System-SkiHRHkiWxho");
+	Callback = setclipboard("https://getfrosties.vercel.app");
 })
 
 Window:SelectTab(1)
