@@ -1,5 +1,5 @@
 -- https://github.com/LorekeeperZinnia/Dex
--- not made by me (frostlua)
+-- not made by me (cattercatty)
 --[[
 	New Dex
 	Final Version
