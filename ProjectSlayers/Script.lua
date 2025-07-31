@@ -3,25 +3,6 @@ getgenv().Websocket = nil;
 
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
-local requiredFunctions = {
-	"readfile";
-	"writefile";
-}
-
-local missing = {}
-
-for _, funcName in ipairs(requiredFunctions) do
-	if typeof(getfenv()[funcName]) ~= "function" then
-		table.insert(missing, funcName)
-	end
-end
-
-if #missing > 0 then
-	local msg = "Your executor is missing required functions: " .. table.concat(missing, ", ")
-	game:GetService("Players").LocalPlayer:Kick(msg)
-end
-
-
 local api = loadstring(game:HttpGet("https://sdkapi-public.luarmor.net/library.lua"))()
 --> Returns a table with methods that you can use.
 -- You must initialize it with the script ID first.
@@ -30,59 +11,63 @@ local api = loadstring(game:HttpGet("https://sdkapi-public.luarmor.net/library.l
 -- You can find it in your loadstring URL or projects tab.
 api.script_id = "590f1ccc9913df943bdbd88635a9d5ca"
 
+pcall(function()
+	  if not isfolder("Frosties") then
+      makefolder("Frosties");
+	  end;
+end)
 
 local function checkKey(inputKey)
-inputKey = inputKey:gsub("%s+", "");
-if #inputKey ~= 32 then return false end
+	inputKey = inputKey:gsub("%s+", "");
+	if #inputKey ~= 32 then
+		return false
+	end
 -- make the API request:
-local status = api.check_key(inputKey); -- pass 32-char user key here
+	local status = api.check_key(inputKey); -- pass 32-char user key here
 
 -- custom logic below:
-if (status.code == "KEY_VALID") then
-
-	writefile("Frosties/Key.txt", inputKey);
+	if (status.code == "KEY_VALID") then
+		pcall(writefile, "Frosties/Key.txt", inputKey);
 
     -- fetch basic info about the key (only if KEY_VALID)
-	Fluent:Notify({
-		Title = "Welcome. Seconds left: " .. math.abs(os.time() - status.data.auth_expire);
-		Content = "Total executions: " ..  status.data.total_executions;
-		SubContent = status.data.note == "Ad Reward" and "Ad Reward" or "Custom Duration";
-		Duration = 10;
-	})
-    
-    script_key = inputKey; -- SET THE KEY BEFORE LOADSTRINGING.
-    getgenv().script_key = inputKey; -- SET THE KEY BEFORE LOADSTRINGING.
-    
-    task.spawn(function() api.load_script(); end); -- Executes the script, based on the script_id you put above.
+		Fluent:Notify({
+			Title = "Welcome. Seconds left: " .. math.abs(os.time() - status.data.auth_expire);
+			Content = "Total executions: " ..  status.data.total_executions;
+			SubContent = status.data.note == "Ad Reward" and "Ad Reward" or "Custom Duration";
+			Duration = 10;
+		})
+		script_key = inputKey; -- SET THE KEY BEFORE LOADSTRINGING.
+		getgenv().script_key = inputKey; -- SET THE KEY BEFORE LOADSTRINGING.
+		task.spawn(function()
+			api.load_script();
+		end); -- Executes the script, based on the script_id you put above.
     -- Alternatively, you can just put the loadstring you got from luarmor website.
     -- You must specify the script_key global either way.
-    return true;
-    
-elseif (status.code == "KEY_HWID_LOCKED") then
-    Fluent:Notify({
-		Title = "Key locked to other HWID";
-		Content = "Get a new key or something";
-		Duration = 10;
-	})
-    return
-    
-elseif (status.code == "KEY_INCORRECT") then
-    Fluent:Notify({
-		Title = "Key is incorrect or expired";
-		Content = "Get a new key or something";
-		Duration = 10;
-	})
-    return    
-else
-    Fluent:Notify({
-		Title = "Key check failed: " .. tostring(status.code);
-		Content = "Try getting a new key if it isn't about it";
-		Duration = 10;
-	})
-end
+		return true;
+	elseif (status.code == "KEY_HWID_LOCKED") then
+		Fluent:Notify({
+			Title = "Key locked to other HWID";
+			Content = "Get a new key or something";
+			Duration = 10;
+		})
+		return
+	elseif (status.code == "KEY_INCORRECT") then
+		Fluent:Notify({
+			Title = "Key is incorrect or expired";
+			Content = "Get a new key or something";
+			Duration = 10;
+		})
+		return
+	else
+		Fluent:Notify({
+			Title = "Key check failed: " .. tostring(status.code);
+			Content = "Try getting a new key if it isn't about it";
+			Duration = 10;
+		})
+	end
 end;
 
-if isfolder and isfolder("Frosties") and isfile("Frosties/Key.txt") then
+if isfolder and isfolder("Frosties") and isfile and isfile("Frosties/Key.txt") and readfile then
 	local key = readfile("Frosties/Key.txt");
 	ret = #key == 32 and checkKey(key) or false;
 	if ret == true then
@@ -92,7 +77,9 @@ end;
 
 if type(script_key) == 'string' and #script_key == 32 then
 	ret = checkKey(script_key) or false;
-	if ret then return end;
+	if ret then
+		return
+	end;
 end;
 
 -- You can see a full list of possible status codes and status messages below.
@@ -100,7 +87,7 @@ end;
 local FrostiesVersion = "2"
 
 local Window = Fluent:CreateWindow({
-	Title = "Frosties ".. FrostiesVersion,
+	Title = "Frosties " .. FrostiesVersion,
 	SubTitle = "discord.gg/XUUjpeyc3S",
 	TabWidth = 160,
 	Size = UDim2.fromOffset(550, 280),
@@ -110,7 +97,10 @@ local Window = Fluent:CreateWindow({
 })
 
 local Tabs1 = {
-	Main = Window:AddTab({ Title = "Main", Icon = "" }),
+	Main = Window:AddTab({
+		Title = "Main",
+		Icon = ""
+	}),
 }
 
 
