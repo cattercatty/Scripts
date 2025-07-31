@@ -3,6 +3,25 @@ getgenv().Websocket = nil;
 
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
+local requiredFunctions = {
+	"readfile";
+	"writefile";
+}
+
+local missing = {}
+
+for _, funcName in ipairs(requiredFunctions) do
+	if typeof(getfenv()[funcName]) ~= "function" then
+		table.insert(missing, funcName)
+	end
+end
+
+if #missing > 0 then
+	local msg = "Your executor is missing required functions: " .. table.concat(missing, ", ")
+	game:GetService("Players").LocalPlayer:Kick(msg)
+end
+
+
 local api = loadstring(game:HttpGet("https://sdkapi-public.luarmor.net/library.lua"))()
 --> Returns a table with methods that you can use.
 -- You must initialize it with the script ID first.
