@@ -67,7 +67,7 @@ local function checkKey(inputKey)
 	end
 end;
 
-if isfolder and isfolder("Frosties") and isfile and isfile("Frosties/Key.txt") and readfile then
+if not script_key and isfolder and isfolder("Frosties") and isfile and isfile("Frosties/Key.txt") and readfile then
 	local key = readfile("Frosties/Key.txt");
 	ret = #key == 32 and checkKey(key) or false;
 	if ret == true then
