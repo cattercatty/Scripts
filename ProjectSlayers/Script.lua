@@ -36,7 +36,7 @@ local function checkKey(inputKey)
 			SubContent = status.data.note == "Ad Reward" and "Ad Reward" or "Custom Duration";
 			Duration = 10;
 		})
-		script_key = inputKey; -- SET THE KEY BEFORE LOADSTRINGING.
+		getgenv().script_key = inputKey; -- SET THE KEY BEFORE LOADSTRINGING.
 		getgenv().script_key = inputKey; -- SET THE KEY BEFORE LOADSTRINGING.
 		task.spawn(function()
 			api.load_script();
@@ -67,7 +67,7 @@ local function checkKey(inputKey)
 	end
 end;
 
-if not script_key and isfolder and isfolder("Frosties") and isfile and isfile("Frosties/Key.txt") and readfile then
+if not getgenv().script_key or not script_key and isfolder and isfolder("Frosties") and isfile and isfile("Frosties/Key.txt") and readfile then
 	local key = readfile("Frosties/Key.txt");
 	ret = #key == 32 and checkKey(key) or false;
 	if ret == true then
@@ -75,8 +75,8 @@ if not script_key and isfolder and isfolder("Frosties") and isfile and isfile("F
 	end;
 end;
 
-if type(script_key) == 'string' and #script_key == 32 then
-	ret = checkKey(script_key) or false;
+if type(script_key or getgenv().script_key) == 'string' and #script_key == 32 then
+	ret = checkKey(script_key or getgenv().script_key) or false;
 	if ret then
 		return
 	end;
