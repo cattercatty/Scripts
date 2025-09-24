@@ -67,7 +67,7 @@ local function checkKey(inputKey)
 	end
 end;
 
-if not getgenv().script_key or not script_key and isfolder and isfolder("Frosties") and isfile and isfile("Frosties/Key.txt") and readfile then
+if (not getgenv().script_key or not script_key) and isfolder and isfolder("Frosties") and isfile and isfile("Frosties/Key.txt") and readfile then
 	local key = isfile and isfile("Frosties/Key.txt") and readfile and readfile("Frosties/Key.txt");
 	ret = key and #key == 32 and checkKey(key) or false;
 	if ret == true then
