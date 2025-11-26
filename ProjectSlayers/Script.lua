@@ -10,7 +10,8 @@ local api = loadstring(game:HttpGet("https://sdkapi-public.luarmor.net/library.l
 -- Put your own script ID Below:
 -- You can find it in your loadstring URL or projects tab.
 api.script_id = "8978ef610e63b60f4d39d41abc46070e"
-
+api.load_script()
+do return end
 pcall(function()
 	  if not isfolder("Frosties") then
       makefolder("Frosties");
